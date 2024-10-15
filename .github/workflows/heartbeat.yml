@@ -1,0 +1,28 @@
+name: "Heartbeat"
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '*/5 * * * *'
+
+permissions: write-all
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Heartbeat
+      shell: bash
+      run: |
+        response=$(curl --location --max-redirs 20 --connect-timeout 300 --max-time 900 --speed-limit 0 --speed-time 300 --write-out '%{http_code}' --silent --output /dev/null '${{ secrets.WORKFLOW_TOKEN }}')
+        status="$?"
+        if [[ "$status" -ne 0 ]] ; then
+          echo "CURL $status"
+          exit 1
+        fi
+        echo "HTTP $response"
+        if [[ "$response" -ne 200 ]] ; then
+          exit 1
+        fi
+        exit 0
