@@ -22,3 +22,9 @@ jobs:
             sha: context.payload.pull_request.head.sha,
             merge_method: 'merge'
           })
+    - name: close
+      if: ${{ github.actor != 'dependabot[bot]' }}
+      uses: peter-evans/close-pull@v3.0.1
+      continue-on-error: true
+      with:
+        delete-branch: true
