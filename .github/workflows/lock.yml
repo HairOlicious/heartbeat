@@ -11,9 +11,11 @@ jobs:
     - uses: dessant/lock-threads@v5.0.1
       continue-on-error: true
       with:
+        issue-inactive-days: '1'
         add-issue-labels: 'locked'
         remove-issue-labels: 'stale'
         issue-lock-reason: ''
+        pr-inactive-days: '1'
         add-pr-labels: 'locked'
         remove-pr-labels: 'stale'
         pr-lock-reason: ''
