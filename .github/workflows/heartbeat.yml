@@ -24,7 +24,7 @@ jobs:
         fi
         echo "HTTP $response"
         if [[ "$response" -ne 200 ]] ; then
-          "::error ::HTTP $response"
+          echo "::error ::HTTP $response"
           exit 1
         fi
         exit 0
