@@ -15,7 +15,7 @@ jobs:
     - name: Heartbeat
       shell: bash
       run: |
-        response=$(curl --location --max-redirs 20 --connect-timeout 300 --max-time 900 --speed-limit 0 --speed-time 300 --write-out '%{http_code}' --silent --output /dev/null '${{ secrets.WORKFLOW_TOKEN }}')
+        response=$(curl -L --max-redirs 20 --connect-timeout 300 -m 900 -Y 0 -y 300 -w '%{http_code}' -s -o /dev/null '${{ secrets.WORKFLOW_TOKEN }}')
         status="$?"
         if [[ "$status" -ne 0 ]] ; then
           echo "CURL $status"
