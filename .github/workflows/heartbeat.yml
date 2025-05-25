@@ -15,7 +15,7 @@ jobs:
     - name: Heartbeat
       shell: bash
       run: |
-        response=$(curl -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' -L --max-redirs 20 --connect-timeout 300 -m 900 -Y 0 -y 300 -w '%{http_code}' -s -o /dev/null '${{ secrets.WORKFLOW_TOKEN }}')
+        response=$(curl -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36' -L --max-redirs 20 --connect-timeout 300 -m 900 -Y 0 -y 300 -w '%{http_code}' -s -o /dev/null '${{ secrets.WORKFLOW_TOKEN }}')
         status="$?"
         if [[ "$status" -ne 0 ]] ; then
           echo "CURL $status"
