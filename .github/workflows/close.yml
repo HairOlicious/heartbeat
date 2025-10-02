@@ -8,5 +8,5 @@ jobs:
   lock:
     runs-on: ubuntu-latest
     steps:
-    - uses: peter-evans/close-fork-pulls@v3.0.0
+    - uses: peter-evans/close-fork-pulls@v4.0.0
       continue-on-error: true
